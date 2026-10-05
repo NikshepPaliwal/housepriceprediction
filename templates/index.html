@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>HouseAI | House Price Predictor</title>
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+
+<div class="page">
+
+
+    <!-- ================================= -->
+    <!-- SIDEBAR -->
+    <!-- ================================= -->
+
+    <aside class="sidebar">
+
+
+        <div class="brand">
+
+            <div class="brand-icon">
+                🏠
+            </div>
+
+            <div>
+
+                <h2>HouseAI</h2>
+
+                <span>
+                    Price Predictor
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-content">
+
+
+            <div class="mini-card">
+
+                <div class="mini-icon">
+                    🤖
+                </div>
+
+                <div>
+
+                    <strong>
+                        AI Powered
+                    </strong>
+
+                    <p>
+                        Decision Tree Model
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar-info">
+
+                <h4>
+                    How It Works
+                </h4>
+
+
+                <div class="step">
+
+                    <span>
+                        01
+                    </span>
+
+                    <p>
+                        Enter property details
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        02
+                    </span>
+
+                    <p>
+                        AI analyzes the property
+                    </p>
+
+                </div>
+
+
+                <div class="step">
+
+                    <span>
+                        03
+                    </span>
+
+                    <p>
+                        Get estimated price
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-footer">
+
+            <span>
+                Machine Learning Project
+            </span>
+
+            <strong>
+                Decision Tree Regression
+            </strong>
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- ================================= -->
+    <!-- MAIN -->
+    <!-- ================================= -->
+
+    <main class="main">
+
+
+        <!-- HEADER -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <p class="eyebrow">
+                    REAL ESTATE • AI PREDICTION
+                </p>
+
+                <h1>
+                    House Price Predictor
+                </h1>
+
+                <p class="subtitle">
+                    Estimate the market value of a property
+                    using Machine Learning.
+                </p>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Model Online
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- ================================= -->
+        <!-- CONTENT -->
+        <!-- ================================= -->
+
+        <div class="content-grid">
+
+
+            <!-- ================================= -->
+            <!-- FORM -->
+            <!-- ================================= -->
+
+            <section class="form-card">
+
+
+                <div class="card-heading">
+
+                    <div>
+
+                        <h2>
+                            Property Details
+                        </h2>
+
+                        <p>
+                            Enter the details of the property below.
+                        </p>
+
+                    </div>
+
+
+                    <div class="house-symbol">
+                        🏡
+                    </div>
+
+                </div>
+
+
+
+                <form action="{{ url_for('predict') }}"
+                      method="POST">
+
+
+                    <!-- BASIC INFORMATION -->
+
+                    <div class="section-title">
+
+                        <span>
+                            01
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Basic Information
+                            </h3>
+
+                            <p>
+                                Size and structure of the property
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="form-grid">
+
+
+                        <!-- AREA -->
+
+                        <div class="input-group full">
+
+                            <label>
+                                Area
+                            </label>
+
+                            <div class="input-wrapper">
+
+                                <input
+                                    type="number"
+                                    name="area"
+                                    placeholder="e.g. 1500"
+                                    min="100"
+                                    required>
+
+                                <span>
+                                    sq.ft
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- BEDROOMS -->
+
+                        <div class="input-group">
+
+                            <label>
+                                Bedrooms
+                            </label>
+
+                            <select
+                                name="bedrooms"
+                                required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="1">
+                                    1 Bedroom
+                                </option>
+
+                                <option value="2">
+                                    2 Bedrooms
+                                </option>
+
+                                <option value="3">
+                                    3 Bedrooms
+                                </option>
+
+                                <option value="4">
+                                    4 Bedrooms
+                                </option>
+
+                                <option value="5">
+                                    5 Bedrooms
+                                </option>
+
+                                <option value="6">
+                                    6 Bedrooms
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- BATHROOMS -->
+
+                        <div class="input-group">
+
+                            <label>
+                                Bathrooms
+                            </label>
+
+                            <select
+                                name="bathrooms"
+                                required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="1">
+                                    1 Bathroom
+                                </option>
+
+                                <option value="2">
+                                    2 Bathrooms
+                                </option>
+
+                                <option value="3">
+                                    3 Bathrooms
+                                </option>
+
+                                <option value="4">
+                                    4 Bathrooms
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- STORIES -->
+
+                        <div class="input-group">
+
+                            <label>
+                                Stories
+                            </label>
+
+                            <select
+                                name="stories"
+                                required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="1">
+                                    1 Story
+                                </option>
+
+                                <option value="2">
+                                    2 Stories
+                                </option>
+
+                                <option value="3">
+                                    3 Stories
+                                </option>
+
+                                <option value="4">
+                                    4 Stories
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+
+                        <!-- PARKING -->
+
+                        <div class="input-group">
+
+                            <label>
+                                Parking Spaces
+                            </label>
+
+                            <select
+                                name="parking"
+                                required>
+
+                                <option value="">
+                                    Select
+                                </option>
+
+                                <option value="0">
+                                    No Parking
+                                </option>
+
+                                <option value="1">
+                                    1 Parking
+                                </option>
+
+                                <option value="2">
+                                    2 Parking
+                                </option>
+
+                                <option value="3">
+                                    3 Parking
+                                </option>
+
+                                <option value="4">
+                                    4 Parking
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+
+                    <!-- ================================= -->
+                    <!-- PROPERTY FEATURES -->
+                    <!-- ================================= -->
+
+                    <div class="section-title second">
+
+                        <span>
+                            02
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Property Features
+                            </h3>
+
+                            <p>
+                                Select the facilities available
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="features-grid">
+
+
+                        <!-- MAIN ROAD -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="mainroad"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Main Road
+                                </strong>
+
+                                <small>
+                                    Property connected to main road
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- GUEST ROOM -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="guestroom"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Guest Room
+                                </strong>
+
+                                <small>
+                                    Separate guest room available
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- BASEMENT -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="basement"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Basement
+                                </strong>
+
+                                <small>
+                                    Basement available
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- HOT WATER -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="hotwaterheating"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Hot Water
+                                </strong>
+
+                                <small>
+                                    Hot water heating system
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- AC -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="airconditioning"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Air Conditioning
+                                </strong>
+
+                                <small>
+                                    Air conditioning available
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- PREFERRED AREA -->
+
+                        <label class="feature">
+
+                            <input
+                                type="checkbox"
+                                name="prefarea"
+                                value="1">
+
+                            <span class="checkmark">
+                                ✓
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Preferred Area
+                                </strong>
+
+                                <small>
+                                    Located in preferred area
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+                    </div>
+
+
+
+                    <!-- ================================= -->
+                    <!-- FURNISHING -->
+                    <!-- ================================= -->
+
+                    <div class="section-title second">
+
+                        <span>
+                            03
+                        </span>
+
+                        <div>
+
+                            <h3>
+                                Furnishing Status
+                            </h3>
+
+                            <p>
+                                Choose the current furnishing level
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="furnishing-grid">
+
+
+                        <!-- UNFURNISHED -->
+
+                        <label class="furnishing-option">
+
+                            <input
+                                type="radio"
+                                name="furnishingstatus"
+                                value="0"
+                                required>
+
+                            <div>
+
+                                <span class="furnishing-icon">
+                                    🪑
+                                </span>
+
+                                <strong>
+                                    Unfurnished
+                                </strong>
+
+                                <small>
+                                    No furniture
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- SEMI FURNISHED -->
+
+                        <label class="furnishing-option">
+
+                            <input
+                                type="radio"
+                                name="furnishingstatus"
+                                value="1">
+
+                            <div>
+
+                                <span class="furnishing-icon">
+                                    🛋️
+                                </span>
+
+                                <strong>
+                                    Semi Furnished
+                                </strong>
+
+                                <small>
+                                    Partially furnished
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+
+                        <!-- FULLY FURNISHED -->
+
+                        <label class="furnishing-option">
+
+                            <input
+                                type="radio"
+                                name="furnishingstatus"
+                                value="2">
+
+                            <div>
+
+                                <span class="furnishing-icon">
+                                    🏠
+                                </span>
+
+                                <strong>
+                                    Fully Furnished
+                                </strong>
+
+                                <small>
+                                    Ready to move
+                                </small>
+
+                            </div>
+
+                        </label>
+
+
+                    </div>
+
+
+
+                    <!-- ================================= -->
+                    <!-- PREDICT BUTTON -->
+                    <!-- ================================= -->
+
+                    <button
+                        type="submit"
+                        class="predict-btn">
+
+                        <span class="btn-icon">
+                            ✨
+                        </span>
+
+                        <span>
+
+                            <strong>
+                                Predict House Price
+                            </strong>
+
+                            <small>
+                                Generate AI estimation
+                            </small>
+
+                        </span>
+
+                        <span class="arrow">
+                            →
+                        </span>
+
+                    </button>
+
+
+                </form>
+
+
+            </section>
+
+
+
+            <!-- ================================= -->
+            <!-- RIGHT PANEL -->
+            <!-- ================================= -->
+
+            <aside class="result-panel">
+
+
+                {% if prediction is defined %}
+
+
+                <!-- RESULT -->
+
+                <div class="result-card success">
+
+
+                    <div class="result-top">
+
+                        <span class="result-badge">
+                            ✓ Prediction Complete
+                        </span>
+
+                    </div>
+
+
+                    <div class="result-icon">
+                        🏠
+                    </div>
+
+
+                    <p class="result-label">
+                        Estimated Property Value
+                    </p>
+
+
+                    <h2>
+                        ₹{{ "{:,.0f}".format(prediction) }}
+                    </h2>
+
+
+                    <div class="lakh-value">
+
+                        ₹{{ "{:.2f}".format(prediction / 100000) }}
+                        Lakhs
+
+                    </div>
+
+
+                    <div class="result-divider"></div>
+
+
+                    <div class="result-note">
+
+                        <span>
+                            🤖
+                        </span>
+
+                        <p>
+
+                            Prediction generated using your
+
+                            <strong>
+                                Decision Tree Regression
+                            </strong>
+
+                            model.
+
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                {% else %}
+
+
+                <!-- EMPTY RESULT -->
+
+                <div class="result-card empty">
+
+
+                    <div class="empty-icon">
+                        🏠
+                    </div>
+
+
+                    <h2>
+                        Your Prediction
+                    </h2>
+
+
+                    <p>
+
+                        Enter the property information and click
+
+                        <strong>
+                            Predict House Price
+                        </strong>
+
+                        to see the estimated value.
+
+                    </p>
+
+
+                    <div class="prediction-placeholder">
+
+                        <span>
+                            ₹
+                        </span>
+
+                        <div>
+
+                            <strong>
+                                --
+                            </strong>
+
+                            <small>
+                                Estimated Price
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+                {% endif %}
+
+
+
+                <!-- ================================= -->
+                <!-- MODEL INFORMATION -->
+                <!-- ================================= -->
+
+                <div class="model-card">
+
+
+                    <div class="model-heading">
+
+                        <div class="model-icon">
+                            🤖
+                        </div>
+
+                        <div>
+
+                            <h3>
+                                AI Model
+                            </h3>
+
+                            <p>
+                                Machine Learning
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="model-row">
+
+                        <span>
+                            Algorithm
+                        </span>
+
+                        <strong>
+                            Decision Tree
+                        </strong>
+
+                    </div>
+
+
+                    <div class="model-row">
+
+                        <span>
+                            Task
+                        </span>
+
+                        <strong>
+                            Regression
+                        </strong>
+
+                    </div>
+
+
+                    <div class="model-row">
+
+                        <span>
+                            Target
+                        </span>
+
+                        <strong>
+                            House Price
+                        </strong>
+
+                    </div>
+
+
+                    <div class="model-row">
+
+                        <span>
+                            Criterion
+                        </span>
+
+                        <strong>
+                            Squared Error
+                        </strong>
+
+                    </div>
+
+
+                    <div class="model-row">
+
+                        <span>
+                            Max Depth
+                        </span>
+
+                        <strong>
+                            5
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- ================================= -->
+                <!-- ERROR -->
+                <!-- ================================= -->
+
+                {% if error %}
+
+                <div class="error-box">
+
+                    <strong>
+                        ⚠ Prediction Error
+                    </strong>
+
+                    <p>
+                        {{ error }}
+                    </p>
+
+                </div>
+
+                {% endif %}
+
+
+
+                <!-- DISCLAIMER -->
+
+                <div class="notice">
+
+                    <span>
+                        ⓘ
+                    </span>
+
+                    <p>
+
+                        This prediction is an educational Machine
+                        Learning estimate and should not be considered
+                        an official property valuation.
+
+                    </p>
+
+                </div>
+
+
+            </aside>
+
+
+        </div>
+
+
+
+        <!-- FOOTER -->
+
+        <footer>
+
+            <span>
+                HouseAI • Decision Tree Regression
+            </span>
+
+            <span>
+                Built with Python + Flask + Scikit-learn
+            </span>
+
+        </footer>
+
+
+    </main>
+
+
+</div>
+
+
+</body>
+
+</html>
